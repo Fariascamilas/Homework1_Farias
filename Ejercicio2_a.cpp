@@ -5,11 +5,7 @@
 
 using namespace std;
 
-#define DEBUG 1
-#define INFO 2
-#define WARNING 3
-#define ERROR 4
-#define CRITICAL 5
+enum messages{DEBUG = 1, INFO, WARNING, ERROR, CRITICAL};
 
 void logMessage(string message, int severity_level){
     ofstream archive("LogSystem", ios::app);
