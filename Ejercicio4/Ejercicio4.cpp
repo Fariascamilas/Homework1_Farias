@@ -26,9 +26,10 @@ int lengthC(char* s){
 }
 
 bool strCompare(string str1, string str2, int l1, int l2){
+    if (l1 == 0 && l2 == 0){return true;}
     if (l1 != l2){
         return false;
-    }
+    }    
     if (l1<0){
         return true;
     }
@@ -39,6 +40,7 @@ bool strCompare(string str1, string str2, int l1, int l2){
 }
 
 bool strComparec(char *str1, char *str2, int l1, int l2){
+    if (l1 == 0 && l2 == 0){return true;}
     if (l1 != l2){
         return false;
     }
@@ -55,11 +57,11 @@ int main(){
     string a = "Demuestre la funcionalidad de su código con un texto de, al menos, 64 caracteres";
     string b = "Demuestre la funcionalidad de su código con un texto de, al menos, 64 caracteres";
 
-    char* aptr = new char[length(a)+1];
+    char* aptr = new char[a.size() + 1]; // Ver si puedo usar solo mis funciones o solo las default
     strcpy(aptr,"Demuestre la funcionalidad de su código con un texto de, al menos, 64 caracteres");
-    char* bptr = new char[length(b)+1];
+    char* bptr = new char[b.size() + 1];
     strcpy(bptr,"Demuestre la funcionalidad de su código con un texto de, al menos, 64 caracteres");
-
+ 
     cout<<"funcion string:"<<endl;
     cout<<strCompare(a,b,length(a),length(b))<<endl;
 
@@ -71,14 +73,18 @@ int main(){
     cout<<"funcion string demoro: "<<elapsedTime.count()<<" nanosegundos"<<endl;
     //-----------------------------------------------------------
     cout<<"funcion char*:"<<endl;
-    cout<<strComparec(aptr,bptr,length(aptr),length(bptr))<<endl;
+    cout<<strComparec(aptr,bptr,lengthC(aptr),lengthC(bptr))<<endl;
 
     auto startTime1 = chrono::high_resolution_clock::now();
-    strComparec(aptr,bptr,length(aptr),length(bptr));
+    strComparec(aptr,bptr,lengthC(aptr),lengthC(bptr));
     auto endTime1 = chrono::high_resolution_clock::now();
     auto elapsedTime1 = chrono::duration_cast<chrono::nanoseconds>(endTime1-startTime1);
 
     cout<<"funcion char* demoro: "<<elapsedTime1.count()<<" nanosegundos"<<endl;
+
+    // Libero memoria de raw pointers
+    delete[] aptr;
+    delete[] bptr;
 }
 
 // En c++ puedo asumir que un char* es un array?

@@ -1,0 +1,10 @@
+[DEBUG]<Mensaje de debug>
+[INFO]<Mensaje de info>
+[WARNING]<Mensaje de warning>
+[ERROR]<Mensaje de error>
+[CRITICAL]<Mensaje de critical>
+[ERROR]<Mensaje de error especifico> archive: Archivo_con_error, line: 45
+[ERROR]<Se ha detectado una falla> archive: Archivo_con_error, line: 104
+[SECUTRITY]<Access denied> user: juanito123
+[SECUTRITY]<Access granted> user: anaclara
+[ERROR]<Ocurrio un error> archive: main2.cpp, line: 28
