@@ -1,24 +1,22 @@
+#include "Ejercicio3.h"
 #include <iostream>
 #include <memory>
 using namespace std;
 
-struct node{
-    shared_ptr<node> next;
-    int value;
-};
-
-struct list{
-    shared_ptr<node> head;
-    int size;
-};
-
 // Elijo usar shared pointer ya que, por ejemplo, a la hora de hacer push back no es posible iterar con punteros de tipo unique lo que implica el uso de raw pointers que son mas inseguros
 
 shared_ptr<node> create_node(int value){
-    unique_ptr<node> newNode(new node);
+    shared_ptr<node> newNode(new node);
     newNode->next = nullptr;
     newNode->value = value;
     return newNode;
+}
+
+shared_ptr<list> create_list(){
+    shared_ptr<list> newList(new list);
+    newList->head = nullptr;
+    newList->size = 0;
+    return newList;
 }
 
 void push_front(shared_ptr<list> l, int val){
