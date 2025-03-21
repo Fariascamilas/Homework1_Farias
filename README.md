@@ -1,1 +1,2 @@
-# Homework1_Farias
+# HOMEWORK 1
+## Paradigmas de Programación
