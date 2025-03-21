@@ -2,7 +2,7 @@
 #### Segundo año de Ingeniería en IA. Universidad de San Andrés
 
 ## Comandos para compilacion de archivos
-#### Previo a la compilación y ejecución de cada ejercicio es necesario ingresar a la carpeta que corresponda: 
+#### Previo a la compilación y ejecución de cada ejercicio con los comandos dados es necesario ingresar a la carpeta que corresponda: 
 Por ejemplo si quisiera ingresar a la carpeta del ejercicio 2 ejecuto
 ```
 cd Ejercicio2
@@ -21,14 +21,15 @@ g++ main1.cpp Ejercicio1.cpp -o nombre_del_ejecutable
 ```
 g++ main2.cpp Ejercicio2.cpp -o nombre_del_ejecutable
 ```
-Luego de ejecutar se imprimirá un aviso de cuantos mensajes fueron logeados.
 ### Ejercicio 3
 ```
+g++ main3.cpp Ejercicio3.cpp -o nombre_del_ejecutable
 ```
 ### Ejercicio 4
 ```
-g++ main4.cpp Ejercicio4.cpp -o ejecutable
+g++ main4.cpp Ejercicio4.cpp -o nombre_del_ejecutable
 ```
+
 ## Comentarios
 ###    INCISO 4.a
 Basandome en el tiempo que tarda cada funcion lo indicado seria elegir (char*) a la hora de comparar cadenas de texto. Además es razonable que el tiempo de ejecución de strCompare con char* sea mas rápido que con string por el modo en que se accede a las posiciones de las cadenas de texto: char* accede directamente a la pos en memoria con punteros, pero string opera con un buffer, si bien no itera (no es o(n)) porque no recorre la cadena de texto completa tarda un poco más.
