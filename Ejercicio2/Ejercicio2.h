@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-enum messages{DEBUG = 1, INFO, WARNING, ERROR, CRITICAL, SECURITY};
+enum messages{DEBUG = 1, INFO, WARNING, ERROR, CRITICAL};
 
 void logMessage(string message, int severity_level);
 
