@@ -3,8 +3,6 @@
 #include <memory>
 using namespace std;
 
-// Elijo usar shared pointer ya que, por ejemplo, a la hora de hacer push back no es posible iterar con punteros de tipo unique lo que implica el uso de raw pointers que son mas inseguros
-
 shared_ptr<node> create_node(int value){
     shared_ptr<node> newNode(new node);
     newNode->next = nullptr;
@@ -63,9 +61,11 @@ void insert(shared_ptr<list> l, int val, int pos){
     }
     shared_ptr<node> current = l->head;
     
-    for(int i = 0; i<(l->size-1); i++){
+    for(int i = 0; i < l->size-1; i++){
         if(i == (pos-1)){
+            shared_ptr<node> aux = current->next;
             shared_ptr<node> newNode = create_node(val);
+            newNode->next = move(aux);
             current->next = move(newNode);
             l->size++;
             return;
@@ -91,7 +91,7 @@ void erase(shared_ptr<list> l, int pos){// La posicion inicial es cero
     }
 
     shared_ptr<node> current = l->head;
-    for(int i = 0; i<(l->size-1); i++){ // Quiero ir hasta la ante ultima posicion para guardarme ese nodo en caso de que pos sea mayor al largo (util para borrar el ultimo)
+    for(int i = 0; i<(l->size)-1; i++){ // Quiero ir hasta la ante ultima posicion para guardarme ese nodo en caso de que pos sea mayor al largo (util para borrar el ultimo)
         
         if(i == (pos-1)){
             if(current->next->next){
@@ -103,9 +103,8 @@ void erase(shared_ptr<list> l, int pos){// La posicion inicial es cero
             l->size--;
             return;
         }
-        current = current->next;
+        if(i != (l->size-2)){current = current->next;} // No quiero segur iterando depues de haber contemplado que pos sea igual a size
     }
-
     // Si no se borro un elemento antes:
     current->next = nullptr;
     l->size--;
